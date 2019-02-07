@@ -1,0 +1,25 @@
+{% extends "homeapp/header.html" %}
+
+{% block content %}
+<h2>Exercises</h2>
+
+<table class="table-bordered table-responsive">
+    <tr>
+        <th style="padding: 10px;">Exercise Name</th>
+        <th style="padding: 10px;">Muscles Affected</th>
+        <th style="padding: 10px;">Exercise Level</th>
+        <th style="padding: 10px;">No of Sets</th>
+        <th style="padding: 10px;">Reps per Sets</th>
+    </tr>
+    {% for item in query_results %}
+    <tr>
+        <td style="padding: 8px;"><a href='/viewExercise/?name={{ item.Exercise_name }}'>{{ item.Exercise_name }}</a></td>
+        <td style="padding: 8px;">{{ item.Exercise_muscles }}</td>
+        <td style="padding: 8px;">{{ item.Exercise_taker_level }}</td>
+        <td style="padding: 8px;">{{ item.Exercise_sets }}</td>
+        <td style="padding: 8px;">{{ item.Exercise_reps }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

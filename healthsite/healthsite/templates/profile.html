@@ -1,0 +1,87 @@
+
+
+
+{% extends "homeapp/header.html" %}
+
+
+
+
+{% block content %}
+
+<h2>User Details</h2>
+<br>
+<br>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-md-6">
+                        {% load staticfiles %}
+                        <img src="{% static 'img/logo.png' %}" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-md-6">
+                        <p><span class="glyphicon glyphicon-leaf"></span><b>User:</b>  {{ item.first_name }} {{ item.last_name }}</p>
+                        <p><b>Username:</b>  {{ item.username }}</p>
+                        <p><b>First Name:</b>  {{ item.first_name }}</p>
+                        <p><b>Last Name:</b>  {{ item.last_name }}</p>
+                        <p><b>E-Mail:</b>  {{ item.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+  <a class="float-right"  href="/editprofile"><u>EditProfile</u></a>
+<br>
+
+<h2>Trainees/Trainer</h2>
+
+<table id="TraineeTrainerData" class="table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th style="padding: 10px;">Trainee Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in query_results %}
+    <tr>
+        <td style="padding: 8px;"><a href='/Trainee/?name={{ item.Trainee_name }}'>{{ item.Trainee_name }}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<table id="TraineeTrainerData" class="table table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th style="padding: 10px;">Trainer Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in query_results %}
+    <tr>
+        <td style="padding: 8px;"><a href='/Trainer/?name={{ item.Trainer_name }}'>{{ item.Trainer_name }}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#Exercises').dataTable();
+});
+</script>
+{% endblock %}
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
